@@ -1,0 +1,26 @@
+1. employee_header_all — stores employee basic info
+id, eha_id, first_name, last_name, marrital_status, gender, dob, mob_no, email, type, status, inserted_on, valid_till
+
+2. hr_general_settings_all — HR app settings
+id, hgs_id, daily_agenda, daily_report, perform_submit, perform_verification
+
+3. hr_qa_settings_all — HR question bank settings
+id, hqa_id, question, question_type, length_of_desc, radio_option, selection_option, inserted_on, entered_by, valid_from, valid_till, inserted_by, viewable_by
+
+4. member_daily_agenda_details_all — daily agenda per employee per month, one row per team-employee combo with day_1 to day_31 columns. Linked to team_header_all via tha_id.
+
+5. member_daily_report_details_all — daily report per employee per month, same day_1 to day_31 structure. Each day stores JSON with out_time, wa_id, text.
+
+6. monthly_questions_details_all — monthly question set, stores up to 30 questions (hqa_1 to hqa_30) per mm-yy.
+
+7. performance_points_details_all — performance points per employee per month, up to 30 point-response pairs (point_1/resp_1 to point_30/resp_30). Linked to employee_header_all.
+
+8. performance_qa_details_all — performance Q&A answers per employee, up to 30 question-answer pairs (hqa_1/ans_1 to hqa_30/ans_30).
+
+9. profile_header_all — role/profile definitions. Has 3 seeded rows: Director, HR, Employee.
+
+10. team_header_all — team definitions with team_members and team_leader stored as JSON arrays of eha_ids. Has 1 seeded team "MI 20".
+
+11. team_emp_combination_all — links employees to teams with link_type (1=member, 2=leader), tracks when linked/unlinked.
+
+12. unique_header_all — ID generator tracker, stores last_id per table with prefix (e.g. EHA for employees).

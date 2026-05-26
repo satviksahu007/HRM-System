@@ -1,0 +1,57 @@
+-- MySQL dump converted from SQLite
+-- Created for XAMPP/phpMyAdmin
+
+CREATE DATABASE IF NOT EXISTS hr_db;
+USE hr_db;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `empid` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
+  `role` VARCHAR(50) NOT NULL DEFAULT "employee",
+  `age` INT,
+  `gender` VARCHAR(20),
+  `marital_status` VARCHAR(20),
+  `DOB` DATE,
+  `present_loc` VARCHAR(200),
+  `permanent_loc` VARCHAR(200),
+  `aadhar` VARCHAR(12) UNIQUE,
+  `pan` VARCHAR(10) UNIQUE,
+  `mobile_no` VARCHAR(10),
+  `bank_acc` VARCHAR(50),
+  `email` VARCHAR(30) UNIQUE,
+  `joining_date` DATE,
+  `tenth_school` VARCHAR(200),
+  `tenth_board` VARCHAR(100),
+  `tenth_year` INT,
+  `tenth_marks` VARCHAR(10),
+  `twelfth_school` VARCHAR(200),
+  `twelfth_board` VARCHAR(100),
+  `twelfth_year` INT,
+  `twelfth_marks` VARCHAR(10),
+  `ug_college` VARCHAR(200),
+  `ug_degree` VARCHAR(100),
+  `ug_year` INT,
+  `ug_marks` VARCHAR(10),
+  `pg_college` VARCHAR(200),
+  `pg_degree` VARCHAR(100),
+  `pg_year` INT,
+  `pg_marks` VARCHAR(10),
+  `father_name` VARCHAR(100),
+  `father_no` VARCHAR(10),
+  `father_location` VARCHAR(200),
+  `mother_name` VARCHAR(100),
+  `mother_no` VARCHAR(10),
+  `mother_location` VARCHAR(200),
+  `aadhar_image` VARCHAR(500),
+  `pan_image` VARCHAR(500),
+  `tenth_marksheet` VARCHAR(500),
+  `twelfth_marksheet` VARCHAR(500),
+  `ug_degree_image` VARCHAR(500),
+  `pg_degree_image` VARCHAR(500),
+  `photo` VARCHAR(500),
+  PRIMARY KEY (`empid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
