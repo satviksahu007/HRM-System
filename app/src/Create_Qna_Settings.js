@@ -79,7 +79,7 @@ function Create_Qna_Settings() {
       if (formData.id) payload.id = formData.id;
       if (formData.type === 1) payload.length_of_desc = formData.maxLength;
       payload.selection_option = formData.options.map(o => o.value.trim()).filter(Boolean);
-      const res = await fetch("http://localhost:5000/qa/questions", { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "include", body: JSON.stringify(payload) });
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/qa/questions`, { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "include", body: JSON.stringify(payload) });
       const data = await res.json();
       if (res.ok) {
 

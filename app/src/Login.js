@@ -50,7 +50,7 @@ function Login({ setIsLoggedIn, setUser, setForcePasswordChange }) {
       }else{
         body.mobile = mobileNumber;
       }
-      const res = await fetch("http://localhost:5000/forgot-password/request-otp",{
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/forgot-password/request-otp`,{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body: JSON.stringify(body)
@@ -93,7 +93,7 @@ function Login({ setIsLoggedIn, setUser, setForcePasswordChange }) {
       }else{
         body.mobile = mobileNumber
       }
-      const res = await fetch("http://localhost:5000/login", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -161,7 +161,7 @@ function Login({ setIsLoggedIn, setUser, setForcePasswordChange }) {
         body.mobile = mobileNumber;
       }
 
-  const res = await fetch("http://localhost:5000/forgot-password/reset", {
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/forgot-password/reset`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

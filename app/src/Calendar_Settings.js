@@ -20,7 +20,7 @@ function Calendar_Settings() {
 
   const downloadTemplate = () => {
     const link = document.createElement('a');
-    link.href = 'http://localhost:5000/company_calendar/template';
+    link.href = `${process.env.REACT_APP_API_URL}/company_calendar/template`;
     link.download = '';
     document.body.appendChild(link);
     link.click();
@@ -33,7 +33,7 @@ function Calendar_Settings() {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:5000/company_calendar?month=${selectedMonth}&year=${selectedYear}`,
+        `${process.env.REACT_APP_API_URL}/company_calendar?month=${selectedMonth}&year=${selectedYear}`,
         {
           credentials: "include"
         }
@@ -86,7 +86,7 @@ function Calendar_Settings() {
       const formData = new FormData();
       formData.append('file', file);
 
-      const res = await fetch('http://localhost:5000/company_calendar/upload', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/company_calendar/upload`, {
         method: 'POST',
         credentials: 'include',
         body: formData
@@ -117,7 +117,7 @@ function Calendar_Settings() {
     try {
 
       const res = await fetch(
-        "http://localhost:5000/company_calendar/update",
+        `${process.env.REACT_APP_API_URL}/company_calendar/update`,
         {
           method: "POST",
           headers: {
@@ -160,7 +160,7 @@ function Calendar_Settings() {
 
   const generateDefaultCalendar = async () => {
     try {
-      const res = await fetch('http://localhost:5000/company_calendar/generate-default', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/company_calendar/generate-default`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

@@ -35,7 +35,7 @@ const Hr_View_Review = () => {
   const fetchReport = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/performance_review/${pr_id}`,
+        `${process.env.REACT_APP_API_URL}/performance_review/${pr_id}`,
         { credentials: "include" }
       );
       const data = await res.json();

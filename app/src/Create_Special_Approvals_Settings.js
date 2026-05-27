@@ -29,7 +29,7 @@ function Create_Special_Approvals_Settings() {
   const checkEmpExists = async (eha_id) => {
     if (!eha_id) { setEmpError(""); return; }
     try {
-      const res = await fetch(`http://localhost:5000/check-special-emp?eha_id=${eha_id}`, { credentials: "include" });
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/check-special-emp?eha_id=${eha_id}`, { credentials: "include" });
       const data = await res.json();
       setEmpError(data.exists ? "This employee already has a special approval, please delete previous to continue." : "");
     } catch (err) { console.error(err); }
@@ -61,7 +61,7 @@ function Create_Special_Approvals_Settings() {
 
   const fetchEmployees = async (search = "") => {
     try {
-      const res = await fetch(`http://localhost:5000/employees/search?search=${encodeURIComponent(search)}`, { credentials: "include" });
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/employees/search?search=${encodeURIComponent(search)}`, { credentials: "include" });
       const data = await res.json();
       if (res.ok) setEmployees(data.employees || []);
     } catch (err) { console.error(err); }
@@ -78,7 +78,7 @@ function Create_Special_Approvals_Settings() {
     if (empError || dateError) return;
     setSaving(true);
     try {
-      const url = id ? `http://localhost:5000/hr-settings/update/${id}?for=special` : "http://localhost:5000/create_special_approval";
+      const url = id ? `${process.env.REACT_APP_API_URL}/hr-settings/update/${id}?for=special` : "${process.env.REACT_APP_API_URL}/create_special_approval";
       const method = id ? "PUT" : "POST";
       const res = await fetch(url, { method, headers: { "Content-Type": "application/json" }, credentials: "include", body: JSON.stringify(formData) });
       const data = await res.json();

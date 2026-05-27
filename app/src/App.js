@@ -43,8 +43,8 @@ function App() {
     
     try {
       const url = isPing
-        ? "http://localhost:5000/check-session?ping=true"
-        : "http://localhost:5000/check-session";
+        ? `${process.env.REACT_APP_API_URL}/check-session?ping=true`
+        : `${process.env.REACT_APP_API_URL}/check-session`;
       const res = await fetch(url, { credentials: "include" });
       const data = await res.json();
       if (!data.valid) {
@@ -82,7 +82,7 @@ function App() {
   const handleLogout = async () => {
     loggingOutRef.current = true; 
     if (intervalRef.current) { clearInterval(intervalRef.current); intervalRef.current = null; }
-    try { await fetch("http://localhost:5000/logout", { method: "POST", credentials: "include" }); } catch (e) {}
+    try { await fetch(`${process.env.REACT_APP_API_URL}/logout`, { method: "POST", credentials: "include" }); } catch (e) {}
     setIsLoggedIn(false);
     setUser(null);
     setForcePasswordChange(false);

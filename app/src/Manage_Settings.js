@@ -69,7 +69,7 @@ function Manage_Settings() {
   };
   const handleDeleteQuestion = async (question) => {
   try {
-    const res = await fetch(`http://localhost:5000/qa/questions/${question.id || question.hqa_id}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/qa/questions/${question.id || question.hqa_id}`, {
       method: "DELETE",
       credentials: "include"
     });
@@ -101,7 +101,7 @@ function Manage_Settings() {
     setLoadingGeneral(true);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:5000/hr-settings?type=present&for=general`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/hr-settings?type=present&for=general`, {
         credentials: "include"
       });
       const data = await res.json();
@@ -131,7 +131,7 @@ function Manage_Settings() {
       const types = ["present", "upcoming", "old"];
       const allResults = await Promise.all(
         types.map(async (type) => {
-          const res = await fetch(`http://localhost:5000/hr-settings?type=${type}&for=special`, {
+          const res = await fetch(`${process.env.REACT_APP_API_URL}/hr-settings?type=${type}&for=special`, {
             credentials: "include"
           });
           const data = await res.json();
@@ -166,7 +166,7 @@ function Manage_Settings() {
   
   setLoadingSpecial(true);
   try {
-    const res = await fetch(`http://localhost:5000/hr-settings/special/${item.hsa_id}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/hr-settings/special/${item.hsa_id}`, {
       method: "DELETE",
       credentials: "include"
     });
@@ -203,7 +203,7 @@ function Manage_Settings() {
     setLoadingQA(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:5000/qa/questions", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/qa/questions`, {
         credentials: "include"
       });
       const data = await res.json();

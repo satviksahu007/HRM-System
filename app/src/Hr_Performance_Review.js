@@ -44,7 +44,7 @@ const HR_Performance_Review = () => {
         }
 
         const res = await fetch(
-          `http://localhost:5000/performance_review/hr_list?month=${month}&status=${status}`,
+          `${process.env.REACT_APP_API_URL}/performance_review/hr_list?month=${month}&status=${status}`,
           { credentials: "include" }
         );
         if (!res.ok) throw new Error(`Server error: ${res.status}`);

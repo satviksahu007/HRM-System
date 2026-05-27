@@ -85,7 +85,7 @@ function Profile({forced = false,onPasswordChanged}) {
     setErrors(prev => ({ ...prev, otp: "" }));  // Clear old error
     setOtp(""); 
     try{
-      const res = await fetch("http://localhost:5000/send-otp",{
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/send-otp`,{
         method:"POST",
         credentials:"include"
       })
@@ -177,7 +177,7 @@ function Profile({forced = false,onPasswordChanged}) {
     }
     if (hasErrors) return;
     try {
-      const res = await fetch("http://localhost:5000/change_password", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/change_password`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

@@ -28,7 +28,7 @@ function Create_Team() {
   const fetchEmployees = async (search = "") => {
     setEmpLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/employees/search?search=${encodeURIComponent(search)}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/employees/search?search=${encodeURIComponent(search)}`, {
         credentials: "include"
       });
       const data = await res.json();
@@ -208,7 +208,7 @@ function Create_Team() {
       })),
     };
 
-      const res = await fetch("http://localhost:5000/create_team", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/create_team`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

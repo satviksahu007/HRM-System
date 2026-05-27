@@ -178,7 +178,7 @@ function Agenda_Submission() {
     setError(null);
     try {
       const res = await fetch(
-        `http://localhost:5000/daily_agendas/today?date=${dateStr}`,
+        `${process.env.REACT_APP_API_URL}/daily_agendas/today?date=${dateStr}`,
         { credentials: "include" }
       );
       if (!res.ok) throw new Error(`Server error: ${res.status}`);

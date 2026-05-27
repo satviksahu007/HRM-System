@@ -41,7 +41,7 @@ const Performance_Report = () => {
   const fetchWindowStatus = async () => {
     setWindowLoading(true);
     try {
-      const res  = await fetch(`http://localhost:5000/window_status_performance`, { 
+      const res  = await fetch(`${process.env.REACT_APP_API_URL}/window_status_performance`, { 
         method: "GET",
         credentials: "include" });
       const data = await res.json();
@@ -100,7 +100,7 @@ const Performance_Report = () => {
 
     try {
       console.log(JSON.stringify(payload))
-      const res = await fetch("http://localhost:5000/performance_report/submit", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/performance_report/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -140,7 +140,7 @@ const Performance_Report = () => {
     fetchWindowStatus();
     const fetchPrefill = async () => {
         try {
-          const res = await fetch("http://localhost:5000/performance_report/prefill", {
+          const res = await fetch(`${process.env.REACT_APP_API_URL}/performance_report/prefill`, {
             credentials: "include",
           }); 
           if (!res.ok) {

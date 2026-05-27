@@ -64,7 +64,7 @@ const ViewField = ({ label, value }) => (
 const ViewFile = ({ label, path }) => {
   const [showPreview, setShowPreview] = useState(false);
   const fileUrl = path
-    ? `http://localhost:5000/${path.replace(/\\/g, "/")}`
+    ? `${process.env.REACT_APP_API_URL}/${path.replace(/\\/g, "/")}`
     : null;
 
   const isImage = /\.(jpeg|jpg|png|gif|webp|bmp)$/i.test(path || "");
@@ -223,7 +223,7 @@ function Employee_details() {
 
   const fetchEmployee = useCallback(async () => {
     try {
-      const res = await fetch(`http://localhost:5000/getemployee/${empid}`, { credentials: "include" });
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/getemployee/${empid}`, { credentials: "include" });
       const data = await res.json();
       if (res.ok) { setEmp(data.employee); setError(null); }
       else setError(data.message);
@@ -336,7 +336,7 @@ function Employee_details() {
       }
     });
     Object.keys(files).forEach(key => { if (files[key]) submitData.append(key, files[key]); });
-    const res = await fetch(`http://localhost:5000/updateemployee/${empid}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/updateemployee/${empid}`, {
       method: "PUT", credentials: "include", body: submitData,
     });
     const data = await res.json();

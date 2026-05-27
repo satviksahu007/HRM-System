@@ -44,7 +44,7 @@ function Performance_Review() {
       const month = `${mm}/${String(yyyy).slice(-2)}`;
 
       const res = await fetch(
-        `http://localhost:5000/performance_review/list?month=${month}&status=${
+        `${process.env.REACT_APP_API_URL}/performance_review/list?month=${month}&status=${
         mainTab === "submitted"
             ? submittedTab
             : "missed"

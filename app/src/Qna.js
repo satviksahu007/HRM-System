@@ -20,7 +20,7 @@ function Qna() {
       setLoading(true);
 
       const res = await fetch(
-        "http://localhost:5000/qa/my-questions",
+        `${process.env.REACT_APP_API_URL}/qa/my-questions`,
         {
           method: "GET",
           credentials: "include"
@@ -112,7 +112,7 @@ const submitAnswer = async () => {
     };
 
     const res = await fetch(
-      "http://localhost:5000/qa/submit-answer",
+      `${process.env.REACT_APP_API_URL}/qa/submit-answer`,
       {
         method: "POST",
 

@@ -31,7 +31,7 @@ function Manage() {
   const fetchEmployees = async (pageNum, status) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/employees?page=${pageNum}&per_page=${PER_PAGE}&status=${status}`,
+        `${process.env.REACT_APP_API_URL}/employees?page=${pageNum}&per_page=${PER_PAGE}&status=${status}`,
         { credentials: "include" }
       );
       const data = await res.json();
@@ -71,7 +71,7 @@ function Manage() {
 
   const handleExtend = async (eha_id, name, days) => {
     try {
-      const res = await fetch(`http://localhost:5000/extend_trial/${eha_id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/extend_trial/${eha_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -117,7 +117,7 @@ function Manage() {
 
   const downloadAllEmployees = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/getemployees/all`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/getemployees/all`, {
         credentials: "include"
       });
       const data = await res.json();
@@ -221,7 +221,7 @@ function Manage() {
   // Terminate employee
   const handleTerminate = async (eha_id, name,remarks="") => {
     try {
-      const res = await fetch(`http://localhost:5000/terminate/${eha_id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/terminate/${eha_id}`, {
         method: "PUT",
         credentials: "include",
         headers: {"Content-Type": "application/json"},
@@ -264,7 +264,7 @@ function Manage() {
 
   const handleReactivate = async (eha_id, name) => {
   try {
-    const res = await fetch(`http://localhost:5000/reactivate/${eha_id}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/reactivate/${eha_id}`, {
       method: "PUT",
       credentials: "include",
     });

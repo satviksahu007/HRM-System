@@ -63,7 +63,7 @@ const [error, setError] = useState("");
   const fetchTeams = async (status) => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/teams?status=${status}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/teams?status=${status}`, {
         credentials: "include"
       });
       const data = await res.json();
@@ -85,7 +85,7 @@ const [error, setError] = useState("");
   const fetchEmployees = async (search = "") => {
     setEmpLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/employees/search?search=${encodeURIComponent(search)}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/employees/search?search=${encodeURIComponent(search)}`, {
         credentials: "include"
       });
       const data = await res.json();
@@ -253,7 +253,7 @@ const [error, setError] = useState("");
       })),
     };
 
-      const res = await fetch(`http://localhost:5000/teams/${editingTeam.tha_id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/teams/${editingTeam.tha_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -297,7 +297,7 @@ const [error, setError] = useState("");
     
 
     try {
-      const res = await fetch(`http://localhost:5000/teams/${team.tha_id}/status`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/teams/${team.tha_id}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

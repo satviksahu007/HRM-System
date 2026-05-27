@@ -41,7 +41,7 @@ function Work_Agenda() {
   const fetchMonthStatus = async (month, year) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/daily_agenda/monthly_status?month=${month + 1}&year=${year}`,
+        `${process.env.REACT_APP_API_URL}/daily_agenda/monthly_status?month=${month + 1}&year=${year}`,
         { credentials: "include" ,
         }
       );
@@ -60,7 +60,7 @@ function Work_Agenda() {
   const fetchWindowStatus = async () => {
     setWindowLoading(true);
     try {
-      const res  = await fetch(`http://localhost:5000/window_status`, { 
+      const res  = await fetch(`${process.env.REACT_APP_API_URL}/window_status`, { 
         method: "GET",
         credentials: "include" });
       const data = await res.json();
@@ -74,7 +74,7 @@ function Work_Agenda() {
 
   const fetchTeamList = async () => {
     try {
-      const res = await fetch("http://localhost:5000/user_tec_combinations", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/user_tec_combinations`, {
         credentials: "include",
       });
       const data = await res.json();
@@ -126,7 +126,7 @@ function Work_Agenda() {
 
     try {
       for (const { tec_id, tasks } of tecIdsWithTasks) {
-        const res = await fetch("http://localhost:5000/daily_agenda/add", {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/daily_agenda/add`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -156,7 +156,7 @@ function Work_Agenda() {
   const fetchTodayAgenda = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/daily_agenda_date/team_wise?date=${todayStr}`,
+        `${process.env.REACT_APP_API_URL}/daily_agenda_date/team_wise?date=${todayStr}`,
         { credentials: "include" }
       );
 
@@ -185,7 +185,7 @@ function Work_Agenda() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/daily_agenda_date/team_wise?date=${dateStr}`,
+        `${process.env.REACT_APP_API_URL}/daily_agenda_date/team_wise?date=${dateStr}`,
         { credentials: "include" }
       );
 
@@ -217,7 +217,7 @@ function Work_Agenda() {
   const handleDeleteTask = async (taskId, tecId) => {   // add tecId parameter
   setDeletingId(taskId);
   try {
-    const res = await fetch("http://localhost:5000/delete_task", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/delete_task`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

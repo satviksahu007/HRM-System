@@ -48,7 +48,7 @@ function DailyReport() {
   const fetchMonthStatus = async (month, year) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/daily_report/monthly_status?month=${month + 1}&year=${year}`,
+        `${process.env.REACT_APP_API_URL}/daily_report/monthly_status?month=${month + 1}&year=${year}`,
         {
           credentials: "include",
         }
@@ -71,7 +71,7 @@ function DailyReport() {
 
   const fetchTeamList = async () => {
     try {
-      const res = await fetch("http://localhost:5000/user_tec_combinations", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/user_tec_combinations`, {
         credentials: "include",
       });
       const data = await res.json();
@@ -96,8 +96,8 @@ function DailyReport() {
     setError(null);
     try {
       const [agendaRes, reportRes] = await Promise.all([
-        fetch(`http://localhost:5000/daily_agenda_date/team_wise?date=${todayStr}`, { credentials: "include" }),
-        fetch(`http://localhost:5000/daily_report/team_wise?date=${todayStr}`, { credentials: "include" })
+        fetch(`${process.env.REACT_APP_API_URL}/daily_agenda_date/team_wise?date=${todayStr}`, { credentials: "include" }),
+        fetch(`${process.env.REACT_APP_API_URL}/daily_report/team_wise?date=${todayStr}`, { credentials: "include" })
       ]);
       const agendaData = await agendaRes.json();
       const reportData = await reportRes.json();
@@ -173,7 +173,7 @@ if (reportEntry && reportEntry.submitted && reportEntry.tasks) {
   const fetchReportWindow = async () => {
     setWindowLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/report_window_status", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/report_window_status`, {
         credentials: "include",
       });
       const data = await res.json();
@@ -188,7 +188,7 @@ if (reportEntry && reportEntry.submitted && reportEntry.tasks) {
 
   const fetchSubmitNextStatus = async () => {
     try {
-      const res = await fetch("http://localhost:5000/submit_next_day_status", { credentials: "include" });
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/submit_next_day_status`, { credentials: "include" });
       const data = await res.json();
       // Normalize to boolean: 1 or "yes" become true
       setSubmitNextDay(data.submit_next_day == 1 || data.submit_next_day === 'yes');
@@ -252,7 +252,7 @@ if (reportEntry && reportEntry.submitted && reportEntry.tasks) {
     setSuccess(null);
     try {
       for (const { tec_id, tasks } of teamsWithTasks) {
-        const res = await fetch("http://localhost:5000/add_report", {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/add_report`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -290,7 +290,7 @@ if (reportEntry && reportEntry.submitted && reportEntry.tasks) {
   const fetchDateReport = async (dateStr) => {
     setViewLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/daily_report/team_wise?date=${dateStr}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/daily_report/team_wise?date=${dateStr}`, {
         credentials: "include",
       });
       const data = await res.json();
@@ -328,8 +328,8 @@ if (reportEntry && reportEntry.submitted && reportEntry.tasks) {
   try {
     // ✅ Fetch BOTH agenda AND report (just like fetchTodayDataForAllTeams does)
     const [agendaRes, reportRes] = await Promise.all([
-      fetch(`http://localhost:5000/daily_agenda_date/team_wise?date=${yesterdayStr}`, { credentials: "include" }),
-      fetch(`http://localhost:5000/daily_report/team_wise?date=${yesterdayStr}`, { credentials: "include" })
+      fetch(`${process.env.REACT_APP_API_URL}/daily_agenda_date/team_wise?date=${yesterdayStr}`, { credentials: "include" }),
+      fetch(`${process.env.REACT_APP_API_URL}/daily_report/team_wise?date=${yesterdayStr}`, { credentials: "include" })
     ]);
     const agendaData = await agendaRes.json();
     const reportData = await reportRes.json();
@@ -476,7 +476,7 @@ const removeYesterdayPendingTask = (tecId, taskId) => {
 
   try {
     for (const { tec_id, tasks } of teamsWithTasks) {
-      const res = await fetch("http://localhost:5000/add_report", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/add_report`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

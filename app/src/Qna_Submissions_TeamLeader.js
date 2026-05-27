@@ -26,7 +26,7 @@ function Qna_Submissions_TeamLeader() {
       setLoading(true);
 
       const res = await fetch(
-        "http://localhost:5000/qa/viewable-questions",
+        `${process.env.REACT_APP_API_URL}/qa/viewable-questions`,
         {
           credentials: "include"
         }
@@ -63,7 +63,7 @@ function Qna_Submissions_TeamLeader() {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:5000/qa/tl-responses/${hqa_id}`,
+        `${process.env.REACT_APP_API_URL}/qa/tl-responses/${hqa_id}`,
         {
           credentials: "include"
         }

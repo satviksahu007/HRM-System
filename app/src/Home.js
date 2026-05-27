@@ -29,7 +29,7 @@ function Home() {
     const fetchWindowStatus = async () => {
         setWindowLoading(true);
     try {
-      const res  = await fetch(`http://localhost:5000/window_status`, { 
+      const res  = await fetch(`${process.env.REACT_APP_API_URL}/window_status`, { 
         method: "GET",
         credentials: "include" });
       const data = await res.json();
@@ -45,7 +45,7 @@ function Home() {
   const fetchReportWindow = async () => {
     setWindowLoading2(true);
     try {
-      const res = await fetch("http://localhost:5000/report_window_status", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/report_window_status`, {
         credentials: "include",
       });
       const data = await res.json();
@@ -65,7 +65,7 @@ function Home() {
       setLoadingq(true);
 
       const res = await fetch(
-        "http://localhost:5000/qa/my-questions",
+        `${process.env.REACT_APP_API_URL}/qa/my-questions`,
         {
           method: "GET",
           credentials: "include"
@@ -99,7 +99,7 @@ function Home() {
   const fetchPWindowStatus = async () => {
     setWindowLoading3(true);
     try {
-      const res  = await fetch(`http://localhost:5000/window_status_performance`, { 
+      const res  = await fetch(`${process.env.REACT_APP_API_URL}/window_status_performance`, { 
         method: "GET",
         credentials: "include" });
       const data = await res.json();
@@ -114,7 +114,7 @@ function Home() {
   const fetchTodayAgenda = async () => {
     try {
         const res = await fetch(
-        `http://localhost:5000/daily_agenda_date/team_wise?date=${todayStr}`,
+        `${process.env.REACT_APP_API_URL}/daily_agenda_date/team_wise?date=${todayStr}`,
         { credentials: "include" }
         );
 
@@ -143,7 +143,7 @@ function Home() {
 
   try {
     const res = await fetch(
-      `http://localhost:5000/daily_report/team_wise?date=${dateStr}`,
+      `${process.env.REACT_APP_API_URL}/daily_report/team_wise?date=${dateStr}`,
       {
         credentials: "include",
       }
@@ -174,7 +174,7 @@ function Home() {
 const fetchPRStatus = async () => {
   try {
     const res = await fetch(
-      "http://localhost:5000/performance_report/submission_status",
+      `${process.env.REACT_APP_API_URL}/performance_report/submission_status`,
       {
         credentials: "include",
       }

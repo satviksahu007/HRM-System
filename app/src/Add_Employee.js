@@ -123,7 +123,7 @@ const [error, setError] = useState("");
 
     const fetchTrialData = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/getemployee/${eha_id}`, {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/getemployee/${eha_id}`, {
           credentials: "include"
         });
         const data = await res.json();
@@ -418,7 +418,7 @@ const validateFaceInImage = async (file) => {
   data.append('photo', file);
 
   try {
-    const res = await fetch('http://localhost:5000/verify-face', {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/verify-face`, {
       method: 'POST',
       credentials: 'include',
       body: data
@@ -491,7 +491,7 @@ const validateFaceInImage = async (file) => {
         submitData.append("trial_eha_id", eha_id);
       }
 
-      const res = await fetch("http://localhost:5000/addemp", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/addemp`, {
         method: "POST",
         credentials: "include",
         body: submitData

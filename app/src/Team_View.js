@@ -74,7 +74,7 @@ function TeamDrawer({ team, date, onClose }) {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/daily_team_submissions/today?date=${date}&tha_id=${team.tha_id}`,
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/daily_team_submissions/today?date=${date}&tha_id=${team.tha_id}`,
           {credentials:"include"})
           const data = await res.json()
           setEmployees(data.employees || [])
@@ -270,7 +270,7 @@ function TeamsView() {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const res  = await fetch(`http://localhost:5000/my_teams?date=${selectedDate}`, { credentials: "include" });
+        const res  = await fetch(`${process.env.REACT_APP_API_URL}/my_teams?date=${selectedDate}`, { credentials: "include" });
         const data = await res.json();
         if (res.ok) {
           setTeams(data.teams);

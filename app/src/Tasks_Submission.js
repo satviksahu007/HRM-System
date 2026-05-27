@@ -1012,7 +1012,7 @@ function Tasks_Submission() {
     setError(null);
     try {
       const res = await fetch(
-        `http://localhost:5000/daily_agendas_all/today?date=${dateStr}`,
+        `${process.env.REACT_APP_API_URL}/daily_agendas_all/today?date=${dateStr}`,
         { credentials: "include" }
       );
       if (!res.ok) throw new Error(`Server error: ${res.status}`);
@@ -1045,7 +1045,7 @@ function Tasks_Submission() {
     const mm_yy = `${mm}-${yyyy}`;
 
     const res = await fetch(
-      `http://localhost:5000/daily_tasks/monthly/download?month=${mm_yy}`,
+      `${process.env.REACT_APP_API_URL}/daily_tasks/monthly/download?month=${mm_yy}`,
       {
         credentials: "include"
       }
@@ -1084,7 +1084,7 @@ function Tasks_Submission() {
     console.log("Sending mm_yy:", mm_yy);
     try {
       const res = await fetch(
-        `http://localhost:5000/daily_tasks/monthly?month=${mm_yy}`,
+        `${process.env.REACT_APP_API_URL}/daily_tasks/monthly?month=${mm_yy}`,
         { credentials: "include" }
       );
       if (!res.ok) throw new Error(`Server error: ${res.status}`);

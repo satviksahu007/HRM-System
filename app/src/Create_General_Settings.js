@@ -32,8 +32,8 @@ const [error, setError] = useState("");
     if (!date) { setValidFromError(""); return; }
     try {
       const url = id
-        ? `http://localhost:5000/check-valid-fromGen?date=${date}&exclude_id=${id}`
-        : `http://localhost:5000/check-valid-fromGen?date=${date}`;
+        ? `${process.env.REACT_APP_API_URL}/check-valid-fromGen?date=${date}&exclude_id=${id}`
+        : `${process.env.REACT_APP_API_URL}/check-valid-fromGen?date=${date}`;
       const res = await fetch(url, { credentials: "include" });
       const data = await res.json();
       setValidFromError(data.exists ? "Settings already exist for this date" : "");
@@ -59,7 +59,7 @@ const [error, setError] = useState("");
       submit_next_day: formData.submit_next_day === "yes" ? 1 : 0
     };
     try {
-      const url = id ? `http://localhost:5000/hr-settings/update/${id}?for=general` : "http://localhost:5000/create_hrgen";
+      const url = id ? `${process.env.REACT_APP_API_URL}/hr-settings/update/${id}?for=general` : `${process.env.REACT_APP_API_URL}/create_hrgen`;
       const method = id ? "PUT" : "POST";
       const res = await fetch(url, { method, headers: { "Content-Type": "application/json" }, credentials: "include", body: JSON.stringify(payload) });
       const data = await res.json();
