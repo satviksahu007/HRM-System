@@ -1,223 +1,294 @@
-﻿# hivemind-hrm
+# HiveMind ERP
 
-HRM-System
-Enterprise Resource Planning (ERP) & Human Resource Management System
+## Enterprise Resource Planning & Workforce Management Platform
 
-A comprehensive ERP platform built to streamline workforce management, employee productivity tracking, team collaboration, performance evaluation, and organizational administration through a centralized role-based system.
+HiveMind ERP is a role-based workforce management platform designed to streamline employee operations, task tracking, team collaboration, performance evaluation, questionnaire management, and organizational administration.
 
-Key Stakeholders
-HR
-Director
-Team Leader
-Employee
+The system supports four stakeholder roles:
 
-The system provides different dashboards, permissions, and workflows for each stakeholder.
+* HR
+* Director
+* Team Leader
+* Employee
 
-Core Features
-Authentication & Security
-Employee login using Employee ID or Mobile Number
-OTP-based password reset
-First-login mandatory password change
-Session timeout protection
-Single-device login enforcement
-Automatic logout after inactivity
-Role-based access control
-Account lock protection against repeated failed attempts
-Employee Management
-HR & Director
-Add employees
-Edit employee details
-View employee records
-Search employees
-Upload employee documents
-Employee onboarding workflow
-Trial employee management
-Permanent employee conversion
-Employee termination
-Employee reactivation
-Trial extension management
-Rejected employee management
-Employee Categories
-Active Employees
-Inactive Employees
-Trial Employees
-Rejected Trial Employees
+Each role is provided with dedicated workflows, permissions, dashboards, and review mechanisms.
 
-Employee lifecycle management is one of the core modules of the platform.
+---
 
-Team Management
-Team Creation
-Create teams
-Assign team leaders
-Assign team members
-Designate roles within teams
-Team Administration
-Edit teams
-Reactivate inactive teams
-Mark teams as completed
-Team hierarchy management
-Team Visibility
+## Core Modules
 
-Employees and team leaders can:
+### Employee Management
 
-View team members
-View team agendas
-View team reports
+Manage the complete employee lifecycle:
 
-Daily Agenda Management
+* Add employees
+* Edit employee information
+* Search employees
+* View employee details
+* Active employee management
+* Trial employee management
+* Employee termination
+* Employee reactivation
+* Trial extension
+* Trial-to-permanent conversion
 
-Employees can:
+Employee categories include:
 
-Create daily agendas
-Track agenda submission status
-View historical agendas
-View agenda calendars
+* Active Employees
+* Inactive Employees
+* Trial Employees
+* Rejected Trial Employees
 
-Submission statuses include:
+---
 
-On Time
-Delayed
-Missed
+### Team Management
 
-Submission windows are controlled through system settings.
+Create and manage organizational teams.
 
-Daily Reporting System
+Features include:
 
-Employees can:
+* Team creation
+* Team leader assignment
+* Team member assignment
+* Designation mapping
+* Team editing
+* Team activation and deactivation
+* Team hierarchy management
 
-Submit daily reports
-Update task completion status
-Add additional work completed during the day
-Submit previous-day reports (if permitted)
+---
 
-Report statuses:
+### Daily Agenda Management
 
-On Time
-Delayed
-Missed
+Employees can submit daily agendas according to configurable submission windows.
 
-HR and Directors can review organization-wide submissions.
+Features:
 
-Performance Review System
-Employee
-Submit monthly performance reports
-Team Lead
-Review team performance reports
-HR & Director
-Monitor submitted reports
-Track pending reviews
-Identify missed submissions
-Analyze review completion status
+* Daily agenda submission
+* On-time tracking
+* Delayed submission tracking
+* Missed submission tracking
+* Calendar-based agenda history
+* Settings-driven submission windows
 
-The system tracks both employee submission timelines and reviewer timelines.
+---
 
-Questionnaire Management
-Administration
-Create questionnaires
-Descriptive questions
-Multiple-choice questions
-Role-based visibility
-Employees
-Submit questionnaire responses
-Team Leads / HR / Directors
-Review responses
-View participation status
-Track missed responses
+### Daily Reporting
 
-Questionnaires can be configured for specific stakeholder groups.
+Track work completed throughout the day.
 
-Settings Management
-General Settings
+Features:
 
-Control:
+* Daily report submission
+* Task status updates
+* Previous-day report submission support
+* Calendar-based report history
+* On-time and delayed tracking
 
-Daily agenda window
-Daily report window
-Next-day report submission
-Performance report window
-Performance review window
-Special Approval Settings
+Task statuses include:
 
-Employee-specific exceptions:
+* Untouched
+* Pending
+* Completed
 
-Early agenda access
-Late agenda access
-Early report access
-Late report access
-Next-day report permissions
+---
 
-Company Calendar Management
-Download holiday calendar templates
-Upload company holiday calendars
-Generate default calendars
-Manage holidays
-Manage working days
-Manage week-offs
+### Performance Management
 
-The calendar integrates directly with agenda and reporting modules.
+Monthly performance reporting and review workflow.
 
-Employee Document Management
+Employee Functions:
 
-Supports:
+* Submit monthly performance reports
 
-Aadhaar
-PAN
-Employee Photograph
-10th Marksheet
-12th Marksheet
-UG Degree
-PG Degree
+Team Leader Functions:
 
-Documents are uploaded and maintained within employee profiles.
+* Review team performance reports
+* Track pending reviews
+* Track missed reviews
 
-Face Verification
+HR & Director Functions:
 
-OpenCV-based facial validation:
+* Review organization-wide reports
+* Track submission status
+* Monitor review completion
 
-Single-face detection
-Invalid image detection
-Multiple-face prevention
+---
 
-Used during employee onboarding and profile validation.
+### Questionnaire Management
 
-Notification System
-OTP notifications
-Employee credential emails
-Password reset emails
-Pending task notifications
-Technology Stack
-Backend
-Python
-Flask
-Flask Sessions
-Flask CORS
-Database
-MySQL
-Security
-SHA-256 Password Hashing
-Session Tokens
-OTP Authentication
-Computer Vision
-OpenCV
-NumPy
-Reporting
-OpenPyXL
-Excel Export/Import
-Email Services
-SMTP
-Modules
-Authentication & Session Management
-Employee Management
-Team Management
-Daily Agenda Management
-Daily Reporting
-Performance Reviews
-Questionnaire Management
-Calendar Management
-Document Management
-Face Verification
-Settings Management
-Notification System
-Author
+Create and manage role-based questionnaires.
+
+Features:
+
+* Descriptive questionnaires
+* Multiple-choice questionnaires
+* Role-specific visibility
+* Response tracking
+* Submission monitoring
+* Missed response tracking
+
+Supported visibility levels:
+
+* Employee
+* Team Lead
+* HR
+* Director
+
+---
+
+### Employee Submission Analytics
+
+HR and Directors can monitor:
+
+* Daily agendas
+* Daily reports
+* Performance reports
+* Questionnaire responses
+
+Data can be viewed:
+
+* Date-wise
+* Month-wise
+
+Submission status categories:
+
+* On Time
+* Delayed
+* Missed
+
+---
+
+### Company Calendar Management
+
+Centralized company calendar administration.
+
+Features:
+
+* Holiday calendar generation
+* Excel calendar download
+* Excel calendar upload
+* Holiday management
+* Working day management
+* Week-off management
+* Calendar synchronization with agenda and reporting modules
+
+---
+
+### Settings Management
+
+#### General Settings
+
+Configure organization-wide rules:
+
+* Daily agenda windows
+* Daily report windows
+* Next-day report permissions
+* Performance report windows
+* Performance review windows
+
+#### Special Approval Settings
+
+Provide exceptions for specific employees:
+
+* Early agenda access
+* Late agenda access
+* Early report access
+* Late report access
+* Next-day reporting permissions
+
+---
+
+### Notice Board
+
+Employee notification system.
+
+Tracks pending:
+
+* Daily agendas
+* Daily reports
+* Performance reports
+* Questionnaires
+
+---
+
+### Authentication & Session Management
+
+Secure user management features:
+
+* Employee ID login
+* Mobile number login
+* OTP-based password reset
+* First-login password change
+* Single-device login enforcement
+* Session timeout handling
+* Automatic logout after inactivity
+* 24-hour maximum session duration
+
+---
+
+### Document Management
+
+Employee document storage and verification.
+
+Supported documents:
+
+* Aadhaar
+* PAN
+* Employee Photograph
+* 10th Marksheet
+* 12th Marksheet
+* UG Degree
+* PG Degree
+
+---
+
+### Face Verification
+
+OpenCV-based image validation for employee onboarding.
+
+Features:
+
+* Face detection
+* Invalid image detection
+* Multiple-face prevention
+
+---
+
+## Technology Stack
+
+### Backend
+
+* Python
+* Flask
+* Flask Sessions
+* Flask-CORS
+
+### Database
+
+* MySQL
+
+### Security
+
+* SHA-256 Password Hashing
+* OTP Authentication
+* Session Token Validation
+
+### Computer Vision
+
+* OpenCV
+* NumPy
+
+### Reporting & Export
+
+* OpenPyXL
+* Excel Import/Export
+
+### Notifications
+
+* SMTP Email Services
+
+---
+
+## Author
 
 Satvik Sahu
